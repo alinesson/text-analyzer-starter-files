@@ -45,12 +45,9 @@ function removeReturns(text) {
 
 function reportResults(text) {
 
-  //tokenize text    
+  //tokenize text - lower case all and make into array    
   var words = tokenizeText(text);     
     
-  // split text into array of words    
-  //var words = userText.split(' ');
-
   // calculate word count
   var wordCount = words.length;  
 
@@ -69,7 +66,6 @@ function reportResults(text) {
 
       // display hidden results area 
       $(".js-text-report").removeClass("hidden");
-
   }
 }
 
