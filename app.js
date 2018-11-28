@@ -71,7 +71,7 @@ $('.js-form').submit(function(event) {
       
       // calculate average word length and display
       var avgWordLen = getAverageWordLength(words);
-      $(".js-averageWordLength").text(avgWordLen);
+      $(".js-averageWordLength").text(avgWordLen + ' characters');
 
       // display hidden results area 
       $(".js-text-report").removeClass("hidden");
