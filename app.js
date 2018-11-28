@@ -29,23 +29,27 @@ function getAverageWordLength(wordList) {
         }
         if (wordLengthArray.length > 0) {
             var sum = wordLengthArray.reduce(getSum);
-            retAvgLength =  sum / wordLengthArray.length;
+            retAvgLength =  (sum / wordLengthArray.length).toFixed(2);
         }
     }
     return retAvgLength;
 }
 
-$('.js-form').submit(function(event) {
-  'use strict';
+function tokenizeText(text) {
+  return text.toLowerCase().match(/\b[^\s]+\b/g).sort();
+}
 
-  // this stops the default form submission behavior
-  event.preventDefault();
+function removeReturns(text) {
+  return text.replace(/\r?\n|\r/g, "");
+}
 
-  // get user submitted text
-  var userText = $(this).find('#user-text').val();
+function reportResults(text) {
+
+  //tokenize text    
+  var words = tokenizeText(text);     
     
   // split text into array of words    
-  var words = userText.split(' ');
+  //var words = userText.split(' ');
 
   // calculate word count
   var wordCount = words.length;  
@@ -67,5 +71,23 @@ $('.js-form').submit(function(event) {
       $(".js-text-report").removeClass("hidden");
 
   }
-});
+}
 
+function watchFormSubmission() {
+
+    $('.js-form').submit(function(event) {
+      'use strict';
+
+      // this stops the default form submission behavior
+      event.preventDefault();
+
+      // get user submitted text
+      var userText = $(this).find('#user-text').val();
+
+      reportResults(removeReturns(userText));    
+    });
+}
+
+$(function() {
+  watchFormSubmission();
+});
