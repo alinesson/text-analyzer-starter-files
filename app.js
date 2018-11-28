@@ -4,12 +4,8 @@ function getUniqueWordCount(wordList) {
     
     if (wordList.length > 0) {
         for (i = 0; i < wordList.length; i++) {
-            console.log('wordList[i]: ' + wordList[i]);
-            console.log('includes: ' + uniqueArray.includes(wordList[i]));
             if (uniqueArray.includes(wordList[i]) !== true) {
-                console.log('ready to push: ' + wordList[i]);
                 uniqueArray.push(wordList[i]);
-                console.log('uniqueArray' + uniqueArray);
             }
         }
         if (uniqueArray.length > 0) {
@@ -29,13 +25,10 @@ function getAverageWordLength(wordList) {
     
     if (wordList.length > 0) {
         for (i = 0; i < wordList.length; i++) {
-            //console.log('wordList[i]: ' + wordList[i]);
-            //console.log('includes: ' + uniqueArray.includes(wordList[i]));
             wordLengthArray.push(wordList[i].length);
         }
         if (wordLengthArray.length > 0) {
             var sum = wordLengthArray.reduce(getSum);
-            console.log('sum: ' + sum);
             retAvgLength =  sum / wordLengthArray.length;
         }
     }
@@ -50,15 +43,12 @@ $('.js-form').submit(function(event) {
 
   // get user submitted text
   var userText = $(this).find('#user-text').val();
-    console.log(userText);
     
   // split text into array of words    
   var words = userText.split(' ');
-    console.log(words);
 
   // calculate word count
   var wordCount = words.length;  
-    console.log(wordCount);
 
   // if there are more than 2 words    
   if (wordCount > 0) {
